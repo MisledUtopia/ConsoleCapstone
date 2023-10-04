@@ -1,4 +1,4 @@
-﻿//tile info and version
+﻿//title info and version
 Console.ForegroundColor = ConsoleColor.Green;
 Console.WriteLine("Dan's Bag-o-tricks Version 0.1");
 Console.WriteLine("Created by the Dev 101 C# Class");
