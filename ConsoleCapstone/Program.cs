@@ -55,7 +55,7 @@ while (playingTheGame)
 {
 	Console.ForegroundColor = ConsoleColor.Magenta;
 	Console.WriteLine("");
-	Console.WriteLine("Easy with my sack!!!");
+	Console.WriteLine("Easy with my big bag!!!");
 	Console.WriteLine("Choose one item at a time. Dont be Greedy!!!");
 	Console.WriteLine("");
 
@@ -71,7 +71,7 @@ while (playingTheGame)
 	"6: Rachel's Game",
 	"7: Aaron's Game",
 	"8: Cali's Game",
-	"9: War Game"
+	"9: Thermonuclear War"
 };
 
 	//list the tricks
@@ -157,20 +157,22 @@ void PlayWar()
 	Console.WriteLine("");
 	Console.WriteLine("");
 	Console.WriteLine("WarGames Version 0.1");
-	Console.WriteLine("Created by: Joshua");
+	Console.WriteLine("Created by: Robert Nellinger");
 	Console.WriteLine("");
 	Console.WriteLine("");
+
+	Console.ForegroundColor = ConsoleColor.Gray;
+	Console.WriteLine("My name is Joshua.");
+	Console.WriteLine("Would you like to play a game.");
+	Console.WriteLine("");
+
+	Console.ForegroundColor = ConsoleColor.White;
+	var wouldYouLikeToPlay = Console.ReadLine();
 
 	var gameOn = true;
 
 	while (gameOn)
 	{
-		Console.ForegroundColor = ConsoleColor.Gray;
-		Console.WriteLine("Would you like to play a game.");
-
-		Console.ForegroundColor = ConsoleColor.White;
-		var wouldYouLikeToPlay = Console.ReadLine();
-
 		Console.ForegroundColor = ConsoleColor.Gray;
 		Console.WriteLine("");
 		Console.WriteLine("List of Games");
@@ -204,21 +206,29 @@ void PlayWar()
 			Console.WriteLine("");
 			Console.WriteLine("Your seasoned eyes fall upon a faded photograph on the wall - family, smiling and carefree, taken on a distant summer day. You take a moment to breathe in the memory, knowing that it might be your last. As the sirens wail, a shiver ran down your spine. The world outside is descending into chaos. The geopolitical tensions that had simmered for decades had finally erupted into a nuclear inferno. The fate of millions hang in the balance.");
 			Console.WriteLine("");
+			Console.ForegroundColor = ConsoleColor.White;
 			Console.WriteLine("Do you press the button?");
 
 			var button = Console.ReadLine();
 
+			Console.ForegroundColor = ConsoleColor.Red;
+
+			Console.WriteLine("");
 			Console.WriteLine("EVERYONE DIES!!!!");
 			Console.WriteLine("");
+
+			Console.ForegroundColor = ConsoleColor.White;
 		}
 		else
 		{
 			if (gameSelection == "4")
 			{
+				Console.ForegroundColor = ConsoleColor.Green;
 				Console.WriteLine("");
 				Console.WriteLine("Funny...");
 				Console.WriteLine("The only way to win is not to play.");
 				Console.WriteLine("");
+				Console.ForegroundColor = ConsoleColor.White;
 				Console.WriteLine("Goodbye...");
 				Console.WriteLine("");
 
@@ -229,6 +239,7 @@ void PlayWar()
 				Console.WriteLine("");
 				Console.WriteLine("I'm sorry... that game is currently unavailable");
 				Console.WriteLine("Perhaps a game of Thermonuclear War?");
+				Console.WriteLine("");
 			}
 		}
 	}
