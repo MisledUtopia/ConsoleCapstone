@@ -7,9 +7,6 @@ Console.WriteLine("");
 
 Console.ForegroundColor = ConsoleColor.DarkMagenta;
 
-
-
-
 //game logo
 Console.WriteLine(".             .");
 Console.WriteLine("..           ..");
