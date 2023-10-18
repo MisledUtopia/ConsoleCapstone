@@ -66,7 +66,7 @@ while (playingTheGame)
 	"1: Maria's Game",
 	"2: Garrion's Game",
 	"3: Leon's Game",
-	"4: Kyle's Game",
+	"4: Big Wallet Gangstas",
 	"5: Neebles's Game",
 	"6: Rachel's Game",
 	"7: Aaron's Game",
