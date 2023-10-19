@@ -175,6 +175,8 @@ void PlayBigWalletGangstas()
 
 	List<decimal> moneyList = new List<decimal>();
 	decimal total = 0;
+	decimal donatedTotal = 0;
+	decimal myCash = 0;
 
 	while (true)
 	{
@@ -248,7 +250,7 @@ void PlayBigWalletGangstas()
 					Console.WriteLine("This is pretty low, but it will do for today. Earn more tomorrow!");
 				}
 
-				total += moneyGiven;
+				donatedTotal += moneyGiven;
 
 				if (total % 30 == 0)
 				{
@@ -257,6 +259,9 @@ void PlayBigWalletGangstas()
 			}
 
 			Console.WriteLine("Running Total: " + total);
+			Console.WriteLine("Dontated Total: " + donatedTotal);
+			Console.WriteLine("My Cash: " + myCash);
+
 			WaitForEnter();
 		}
 		else if (decision == "N")
