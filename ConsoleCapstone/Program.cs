@@ -488,7 +488,7 @@ void PlayWhackANerd()
             case ConsoleKey.Escape:
                 Console.Clear();
                 Console.WriteLine("Whack-A-Nerd was closed...");
-                Environment.Exit(0);
+                return;
                 break;
             default: goto GetInput;
         }
