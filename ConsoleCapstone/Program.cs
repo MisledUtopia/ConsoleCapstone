@@ -280,6 +280,7 @@ void PlayBigWalletGangstas()
 
 void PlayTicTacToe()
 {
+    Console.ForegroundColor = ConsoleColor.DarkYellow;
     bool closeRequested = false;
     bool playerTurn = true;
     Random random = new();
@@ -427,6 +428,7 @@ void PlayTicTacToe()
 
 void PlayWhackANerd()
 {
+    Console.ForegroundColor = ConsoleColor.DarkBlue;
     string Board =
     @" ╔═══╦═══════╗ ╔═══╦═══════╗ ╔═══╦═══════╗" + '\n' +
     @" ║ 7 ║       ║ ║ 8 ║       ║ ║ 9 ║       ║" + '\n' +
