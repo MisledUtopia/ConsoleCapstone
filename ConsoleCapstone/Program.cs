@@ -1,7 +1,5 @@
 ﻿//Aaron's Change TEST
-//TEST 2
-// TEST 3
-//TEST 4
+
 //title info and version
 using System;
 
@@ -75,7 +73,7 @@ while (playingTheGame)
 	"4: Big Wallet Gangstas",
 	"5: Neebles's Game",
 	"6: Rachel's Game",
-	"7: Aaron's Game",
+	"7: Aaron's BlackJack Game",
 	"8: Tic Tac Toe",
 	"9: Thermonuclear War",
     "10: Whack-A-Nerd"
