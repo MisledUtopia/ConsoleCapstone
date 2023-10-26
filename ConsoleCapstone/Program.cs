@@ -1,6 +1,4 @@
-﻿//Aaron's Change TEST
-
-//title info and version
+﻿//title info and version
 using System;
 
 Console.ForegroundColor = ConsoleColor.Green;
@@ -363,8 +361,8 @@ static string GetUserChoice(string prompt)
 }
 
 
-	}
-}
+// Aaron - there was an issue with unneeded { } in here. I deleted and application ran.
+
 void PlayShipShape()
 {
     Console.WriteLine("Welcome, Pirate!");
@@ -1036,6 +1034,7 @@ void PlayWar()
 //******************************************************************************
 void PlayBlackJackGame()
 {
+    Console.ForegroundColor = ConsoleColor.White;
     Deck deck = new();
 
     deck.Shuffle(new Random());
@@ -1047,10 +1046,8 @@ void PlayBlackJackGame()
     string playerName = Console.ReadLine();
     Console.WriteLine("Welcome to Blackjack!");
 
-
     // Not dealing with Hard or Soft 17, Splitting, int-Downs, etc.
     //******************************************************************************
-
 
     bool readyToPlay = PromptUserForDecision(playerName);
 
@@ -1069,7 +1066,6 @@ void PlayBlackJackGame()
         Console.WriteLine($"Are you ready to play?");
         Console.WriteLine("[Y] To Play.");
         Console.WriteLine("[N] To Exit.");
-
 
         while (true)
         {
@@ -1096,7 +1092,6 @@ void PlayBlackJackGame()
     }
     //******************************************************************************
     // Round 1 Start, Buy-In
-    //May not be handling negative numbers - need to test
 
     Console.WriteLine("Do you want to buy in at $10, $25, $50, or $100?");
     int buyInValue;
@@ -1160,10 +1155,11 @@ void PlayBlackJackGame()
                 break;
             }
         }
+
         Console.WriteLine($"You're betting ${betValue}. Good Luck!");
         Console.WriteLine("");
         Console.WriteLine($"Player's hand: {DisplayHand(playerHand, true)} ({playerTotal})");
-        Console.WriteLine($"Dealer's hand: {DisplayHand(dealerHand, true)} ({dealerTotal})");  //one facedown until all players stand dealerShownTotal
+        //Console.WriteLine($"Dealer's hand: {DisplayHand(dealerHand, true)} ({dealerTotal})");  //Do not show dealer hand
 
         //******************************************************************************
         // Actual Gameplay - Need to refine some of the mechanics and prompts
@@ -1182,16 +1178,18 @@ void PlayBlackJackGame()
                 Console.WriteLine($"Player's hand: {DisplayHand(playerHand, true)} ({playerTotal})");
 
                 if (dealerTotal < 17)
+                // Need to make a new variable for facedown and faceup cards for the Dealer
                 {
                     Card newCardDealer = deck.DealCard();
                     dealerHand.Add(newCardDealer);
                     dealerTotal = CalculateHandValue(dealerHand);
                     Console.WriteLine($"\nDealer has to hit. Dealer draws {DisplayCard(newCardDealer)}");
-                    Console.WriteLine($"Dealer hand: {DisplayHand(dealerHand, true)} ({dealerTotal})");
+                    //Console.WriteLine($"Dealer hand: {DisplayHand(dealerHand, true)} ({dealerTotal})");
                     continue;
                 }
                 continue;
             }
+
             if (choice == 'S')
             {
                 Console.WriteLine($"\nYou Stand. {DisplayHand(playerHand, true)} ({playerTotal})");
@@ -1202,10 +1200,11 @@ void PlayBlackJackGame()
                     dealerHand.Add(newCard);
                     dealerTotal = CalculateHandValue(dealerHand);
                     Console.WriteLine($"\nDealer has to hit. Dealer draws {DisplayCard(newCard)}");
-                    Console.WriteLine($"Dealer hand: {DisplayHand(dealerHand, true)} ({dealerTotal})");
+                    Console.WriteLine($"Dealer hand: {DisplayCard(newCard)} ({dealerTotal})");
                 }
                 break;
             }
+
             else if (choice != 'H' && choice != 'S')
             {
                 Console.WriteLine("Invalid Response.\nPlease enter 'H' to Hit or 'S' to Stand.");
@@ -1284,7 +1283,6 @@ void PlayBlackJackGame()
         //******************************************************************************
         // Tell user outcome of round
         // I could probably make this a function to figure this out, adjust bankroll, etc. and use a switch statement?
-        // ISSUE: Not handling rules for a tie when both have 21
 
         void DetermineWinner(int playerTotal, int dealerTotal)
         {
@@ -1311,6 +1309,8 @@ void PlayBlackJackGame()
                 Console.WriteLine("Dealer has Blackjack!");
                 bankRollAmount = bankRollAmount - betValue;
                 Console.WriteLine($"- ${betValue}\nBankroll: ${bankRollAmount}");
+                return;
+                //Immediate loss if Dealer gets 21
             }
             else if (playerTotal > dealerTotal)                         //Player wins
             {
@@ -1328,6 +1328,13 @@ void PlayBlackJackGame()
             {
                 Console.WriteLine("It's a tie!");                       // TIE
                 Console.WriteLine($"All bets returned. BankRoll : {bankRollAmount}");
+            }
+            else if (dealerTotal == 21)
+            {
+                Console.WriteLine("Dealer has BlackJack! You lose!");
+                bankRollAmount = bankRollAmount - betValue;
+                Console.WriteLine($"- ${betValue}\nBankroll: ${bankRollAmount}");
+                return;
             }
         }
 
