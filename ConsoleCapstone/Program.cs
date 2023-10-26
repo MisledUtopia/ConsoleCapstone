@@ -183,171 +183,183 @@ void PlayCuthulusReign()
 
     var gameOn = true;
 
-    while (true)
-
+    while (gameOn)
     {
-        static void Main(string[] args)
+        Console.WriteLine("Welcome to the Lovecraftian Mystery Adventure!");
+        Console.WriteLine("------------------------------------------------");
+        Console.WriteLine("You find yourself in the small coastal town of Innsmouth.");
+        Console.WriteLine("The town's unsettling reputation for strange occurrences and eerie disappearances ");
+        Console.WriteLine("has drawn you here. As night falls, you feel a deep sense of foreboding.");
+
+        string choice;
+
+        // Beginning of the story
+        Console.WriteLine("\nYou stand at a crossroads. There are two paths before you:");
+        Console.WriteLine("1. Follow the narrow, dimly lit alleyway.");
+        Console.WriteLine("2. Knock on the door of the old, decrepit mansion nearby.");
+
+        choice = GetUserChoice("Enter your choice (1/2): ");
+
+        if (choice == "1")
         {
-            bool playAgain;
-            do
+            // Explore the alleyway
+            Console.WriteLine("\nYou venture into the dark alleyway. The shadows seem to writhe and move.");
+            Console.WriteLine("As you walk deeper, you stumble upon a cryptic symbol on the ground.");
+
+            choice = GetUserChoice("1. Investigate the symbol. \n2. Leave the alleyway. \n3. Call out for help.");
+
+            if (choice == "1")
             {
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.WriteLine("You find yourself in the small coastal town of Innsmouth.");
-                Console.WriteLine("The town's unsettling reputation for strange occurrences and eerie disappearances ");
-                Console.WriteLine("has drawn you here. As night falls, you feel a deep sense of foreboding.");
+                Console.WriteLine("\nYou kneel to examine the symbol. It's a sigil of some ancient, unknown cult.");
+                Console.WriteLine("As you touch it, you feel a sudden chill and a presence lurking nearby.");
+                Console.WriteLine("Suddenly, tentacles emerge from the shadows, and you are pulled into the darkness.");
+                Console.WriteLine("You have become one with the cosmic horror. The end.");
+            }
+            else if (choice == "2")
+            {
+                Console.WriteLine("\nYou wisely choose to leave the eerie alleyway behind.");
+                Console.WriteLine("As you retreat, you hear strange whispers fading into the night.");
+                Console.WriteLine("You continue your exploration of Innsmouth.");
+            }
+            else
+            {
+                Console.WriteLine("\nYou call out for help, but your voice seems to be swallowed by the oppressive darkness.");
+                Console.WriteLine("No one responds, and the eerie silence grows more unsettling.");
+                Console.WriteLine("You decide to leave the alleyway.");
+            }
+        }
+        else
+        {
+            // Knock on the mansion's door
+            Console.WriteLine("\nYou decide to knock on the door of the old mansion.");
+            Console.WriteLine("After a few moments, an elderly woman with a sinister smile answers.");
+            Console.WriteLine("She invites you inside and offers a cup of tea. Do you accept?");
+            Console.WriteLine("1. Accept the tea.");
+            Console.WriteLine("2. Politely decline and ask about the town's history.");
+            Console.WriteLine("3. Ask about the woman's name.");
 
-                string choice;
+            choice = GetUserChoice("Enter your choice (1/2/3): ");
 
-                // Beginning of the story
-                Console.WriteLine("\nYou stand at a crossroads. There are two paths before you:");
-                Console.WriteLine("1. Follow the narrow, dimly lit alleyway.");
-                Console.WriteLine("2. Knock on the door of the old, decrepit mansion nearby.");
+            if (choice == "1")
+            {
+                // Accept the tea
+                Console.WriteLine("\nYou accept the tea, but as you take a sip, you feel your vision blur.");
+                Console.WriteLine("You realize too late that it was laced with a strange substance.");
+                Console.WriteLine("You fade into unconsciousness, never to awaken again.");
+                Console.WriteLine("Your journey ends here.");
+            }
+            else if (choice == "2")
+            {
+                // Ask about the town's history
+                Console.WriteLine("\nYou politely decline the tea and engage the woman in conversation.");
+                Console.WriteLine("She tells you about Innsmouth's dark history and the secrets that lie beneath.");
+                Console.WriteLine("She offers to guide you to a hidden library where you might find answers.");
+                Console.WriteLine("Do you accept her offer?");
+                Console.WriteLine("1. Accept the offer.");
+                Console.WriteLine("2. Refuse and leave the mansion.");
+                Console.WriteLine("3. Ask about the woman's name.");
+
+                choice = GetUserChoice("Enter your choice (1/2/3): ");
+
+                if (choice == "1")
+                {
+                    // Accept the offer to the library
+                    Console.WriteLine("\nYou accept her offer and follow her to the hidden library.");
+                    Console.WriteLine("The books are filled with forbidden knowledge of cosmic horrors and ancient rituals.");
+                    Console.WriteLine("As you delve deeper into the texts, your sanity begins to unravel.");
+                    Console.WriteLine("You have discovered too much, and the price is your sanity. The end.");
+                }
+                else if (choice == "2")
+                {
+                    // Refuse and leave the mansion
+                    Console.WriteLine("\nYou thank the woman for her information and leave the mansion.");
+                    Console.WriteLine("The night in Innsmouth is dark, and the mysteries of the town remain unsolved.");
+                    Console.WriteLine("You continue your journey, forever haunted by the enigmatic encounter.");
+                    Console.WriteLine("Your adventure continues...");
+                }
+                else
+                {
+                    // Ask about the woman's name
+                    Console.WriteLine("\nYou inquire about the woman's name.");
+                    Console.WriteLine("She hesitates for a moment and then whispers, 'I am Nyarlathotep.'");
+                    Console.WriteLine("You feel a sudden dread as the name echoes in your mind.");
+                    Console.WriteLine("You realize you are in the presence of an ancient and malevolent entity.");
+                    Console.WriteLine("Do you choose to attack?");
+                    Console.WriteLine("1. Attack the entity.");
+                    Console.WriteLine("2. Try to escape.");
+
+                    choice = GetUserChoice("Enter your choice (1/2): ");
+
+                    if (choice == "1")
+                    {
+                        // Attack the entity
+                        Console.WriteLine("\nYou attempt to attack the entity, but before you can react,");
+                        Console.WriteLine("Nyarlathotep's otherworldly power engulfs you.");
+                        Console.WriteLine("In an instant, your existence is erased, and you become a mere memory.");
+                        Console.WriteLine("The entity remains unscathed. Your journey ends in oblivion.");
+                    }
+                    else
+                    {
+                        // Try to escape
+                        Console.WriteLine("\nYou wisely choose to try to escape from the entity.");
+                        Console.WriteLine("With all your strength, you make a hasty retreat from the mansion.");
+                        Console.WriteLine("The night in Innsmouth is dark, and the mysteries of the town remain unsolved.");
+                        Console.WriteLine("You continue your journey, forever haunted by the enigmatic encounter.");
+                        Console.WriteLine("Your adventure continues...");
+                    }
+                }
+            }
+            else
+            {
+                // Ask about the woman's name
+                Console.WriteLine("\nYou inquire about the woman's name.");
+                Console.WriteLine("She hesitates for a moment and then whispers, 'I am Nyarlathotep.'");
+                Console.WriteLine("You feel a sudden dread as the name echoes in your mind.");
+                Console.WriteLine("You realize you are in the presence of an ancient and malevolent entity.");
+                Console.WriteLine("Do you choose to attack?");
+                Console.WriteLine("1. Attack the entity.");
+                Console.WriteLine("2. Try to escape.");
 
                 choice = GetUserChoice("Enter your choice (1/2): ");
 
                 if (choice == "1")
                 {
-                    // Explore the alleyway
-                    Console.WriteLine("\nYou venture into the dark alleyway. The shadows seem to writhe and move.");
-                    Console.WriteLine("As you walk deeper, you stumble upon a cryptic symbol on the ground.");
-
-                    choice = GetUserChoice("1. Investigate the symbol. \n2. Leave the alleyway. \n3. Call out for help.");
-
-                    if (choice == "1")
-                    {
-                        Console.WriteLine("\nYou kneel to examine the symbol. It's a sigil of some ancient, unknown cult.");
-                        Console.WriteLine("As you touch it, you feel a sudden chill and a presence lurking nearby.");
-                        Console.WriteLine("Suddenly, tentacles emerge from the shadows, and you are pulled into the darkness.");
-                        Console.WriteLine("You have become one with the cosmic horror. The end.");
-                    }
-                    else if (choice == "2")
-                    {
-                        Console.WriteLine("\nYou wisely choose to leave the eerie alleyway behind.");
-                        Console.WriteLine("As you retreat, you hear strange whispers fading into the night.");
-                        Console.WriteLine("You continue your exploration of Innsmouth.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nYou call out for help, but your voice seems to be swallowed by the oppressive darkness.");
-                        Console.WriteLine("No one responds, and the eerie silence grows more unsettling.");
-                        Console.WriteLine("You decide to leave the alleyway.");
-                    }
+                    // Attack the entity
+                    Console.WriteLine("\nYou attempt to attack the entity, but before you can react,");
+                    Console.WriteLine("Nyarlathotep's otherworldly power engulfs you.");
+                    Console.WriteLine("In an instant, your existence is erased, and you become a mere memory.");
+                    Console.WriteLine("The entity remains unscathed. Your journey ends in oblivion.");
                 }
                 else
                 {
-                    // Knock on the mansion's door
-                    Console.WriteLine("\nYou decide to knock on the door of the old mansion.");
-                    Console.WriteLine("After a few moments, an elderly woman with a sinister smile answers.");
-                    Console.WriteLine("She invites you inside and offers a cup of tea. Do you accept?");
-                    Console.WriteLine("1. Accept the tea.");
-                    Console.WriteLine("2. Politely decline and ask about the town's history.");
-                    Console.WriteLine("3. Ask about the woman's name.");
-
-                    choice = GetUserChoice("Enter your choice (1/2/3): ");
-
-                    if (choice == "1")
-                    {
-                        // Accept the tea
-                        Console.WriteLine("\nYou accept the tea, but as you take a sip, you feel your vision blur.");
-                        Console.WriteLine("You realize too late that it was laced with a strange substance.");
-                        Console.WriteLine("You fade into unconsciousness, never to awaken again.");
-                        Console.WriteLine("Your journey ends here.");
-                    }
-                    else if (choice == "2")
-                    {
-                        // Ask about the town's history
-                        Console.WriteLine("\nYou politely decline the tea and engage the woman in conversation.");
-                        Console.WriteLine("She tells you about Innsmouth's dark history and the secrets that lie beneath.");
-                        Console.WriteLine("She offers to guide you to a hidden library where you might find answers.");
-                        Console.WriteLine("Do you accept her offer?");
-                        Console.WriteLine("1. Accept the offer.");
-                        Console.WriteLine("2. Refuse and leave the mansion.");
-                        Console.WriteLine("3. Ask about the woman's name.");
-
-                        choice = GetUserChoice("Enter your choice (1/2/3): ");
-
-                        if (choice == "1")
-                        {
-                            // Accept the offer to the library
-                            Console.WriteLine("\nYou accept her offer and follow her to the hidden library.");
-                            Console.WriteLine("The books are filled with forbidden knowledge of cosmic horrors and ancient rituals.");
-                            Console.WriteLine("As you delve deeper into the texts, your sanity begins to unravel.");
-                            Console.WriteLine("You have discovered too much, and the price is your sanity. The end.");
-                        }
-                        else if (choice == "2")
-                        {
-                            // Refuse and leave the mansion
-                            Console.WriteLine("\nYou thank the woman for her information and leave the mansion.");
-                            Console.WriteLine("The night in Innsmouth is dark, and the mysteries of the town remain unsolved.");
-                            Console.WriteLine("You continue your journey, forever haunted by the enigmatic encounter.");
-                            Console.WriteLine("Your adventure continues...");
-                        }
-                        else
-                        {
-                            // Ask about the woman's name
-                            Console.WriteLine("\nYou inquire about the woman's name.");
-                            Console.WriteLine("She hesitates for a moment and then whispers, 'I am Nyarlathotep.'");
-                            Console.WriteLine("You feel a sudden dread as the name echoes in your mind.");
-                            Console.WriteLine("You realize you are in the presence of an ancient and malevolent entity.");
-                            Console.WriteLine("Your fate is sealed, and your journey ends in madness.");
-                        }
-                    }
-                    else
-                    {
-                        // Ask about the woman's name
-                        Console.WriteLine("\nYou inquire about the woman's name.");
-                        Console.WriteLine("She hesitates for a moment and then whispers, 'I am Nyarlathotep.'");
-                        Console.WriteLine("You feel a sudden dread as the name echoes in your mind.");
-                        Console.WriteLine("You realize you are in the presence of an ancient and malevolent entity.");
-                        Console.WriteLine("Do you choose to attack?");
-                        Console.WriteLine("1. Attack the entity.");
-                        Console.WriteLine("2. Try to escape.");
-
-                        choice = GetUserChoice("Enter your choice (1/2): ");
-
-                        if (choice == "1")
-                        {
-                            // Attack the entity
-                            Console.WriteLine("\nYou attempt to attack the entity, but before you can react,");
-                            Console.WriteLine("Nyarlathotep's otherworldly power engulfs you.");
-                            Console.WriteLine("In an instant, your existence is erased, and you become a mere memory.");
-                            Console.WriteLine("The entity remains unscathed. Your journey ends in oblivion.");
-                        }
-                        else
-                        {
-                            // Try to escape
-                            Console.WriteLine("\nYou wisely choose to try to escape from the entity.");
-                            Console.WriteLine("With all your strength, you make a hasty retreat from the mansion.");
-                            Console.WriteLine("The night in Innsmouth is dark, and the mysteries of the town remain unsolved.");
-                            Console.WriteLine("You continue your journey, forever haunted by the enigmatic encounter.");
-                            Console.WriteLine("Your adventure continues...");
-                        }
-                    }
+                    // Try to escape
+                    Console.WriteLine("\nYou wisely choose to try to escape from the entity.");
+                    Console.WriteLine("With all your strength, you make a hasty retreat from the mansion.");
+                    Console.WriteLine("The night in Innsmouth is dark, and the mysteries of the town remain unsolved.");
+                    Console.WriteLine("You continue your journey, forever haunted by the enigmatic encounter.");
+                    Console.WriteLine("Your adventure continues...");
                 }
-
-                Console.WriteLine("Would you like to try again?");
-                Console.WriteLine("Press 'R' to try again or 'X' to exit.");
-                choice = Console.ReadLine();
-                playAgain = choice.Trim().ToUpper() == "R";
-            } while (playAgain);
-
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            }
         }
-
-        static string GetUserChoice(string prompt)
-        {
-            string choice;
-            do
-            {
-                Console.Write(prompt);
-                choice = Console.ReadLine().Trim();
-            } while (choice != "1" && choice != "2" && choice != "3");
-            return choice;
-        }
-    }
+        Console.WriteLine("Would you like to try again? Press R to Retry or X to Exit");
+        choice = Console.ReadLine().ToLower();
+        if (choice == "x") {
+            gameOn = false;
+        }  
 }
 
+static string GetUserChoice(string prompt)
+{
+    string choice;
+    do
+    {
+        Console.Write(prompt);
+        choice = Console.ReadLine().Trim();
+    } while (choice != "1" && choice != "2" && choice != "3");
+    return choice;
+}
+    
+}
 
 
 void PlayBigWalletGangstas()
@@ -778,49 +790,6 @@ void PlayWhackANerd()
 void WaitForEnter()
 {
     while (Console.ReadKey(intercept: true).Key != ConsoleKey.Enter) ;
-}
-
-                        if (choice == "1")
-                        {
-                            // Attack the entity
-                            Console.WriteLine("\nYou attempt to attack the entity, but before you can react,");
-                            Console.WriteLine("Nyarlathotep's otherworldly power engulfs you.");
-                            Console.WriteLine("In an instant, your existence is erased, and you become a mere memory.");
-                            Console.WriteLine("The entity remains unscathed. Your journey ends in oblivion.");
-                        }
-                        else
-                        {
-                            // Try to escape
-                            Console.WriteLine("\nYou wisely choose to try to escape from the entity.");
-                            Console.WriteLine("With all your strength, you make a hasty retreat from the mansion.");
-                            Console.WriteLine("The night in Innsmouth is dark, and the mysteries of the town remain unsolved.");
-                            Console.WriteLine("You continue your journey, forever haunted by the enigmatic encounter.");
-                            Console.WriteLine("Your adventure continues...");
-                        }
-                    }
-                }
-
-                Console.WriteLine("Would you like to try again?");
-                Console.WriteLine("Press 'R' to try again or 'X' to exit.");
-                choice = Console.ReadLine();
-                playAgain = choice.Trim().ToUpper() == "R";
-            } while (playAgain);
-
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
-        }
-
-        static string GetUserChoice(string prompt)
-        {
-            string choice;
-            do
-            {
-                Console.Write(prompt);
-                choice = Console.ReadLine().Trim();
-            } while (choice != "1" && choice != "2" && choice != "3");
-            return choice;
-        }
-    }
 }
 
 
