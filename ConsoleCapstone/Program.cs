@@ -68,7 +68,7 @@ while (playingTheGame)
 	var tricks = new List<string>
 {
 	"1: Maria's Game",
-	"2: Garrion's Game",
+	"2: Ship Shape",
 	"3: Leon's Game",
 	"4: Big Wallet Gangstas",
 	"5: Neebles's Game",
@@ -102,7 +102,8 @@ while (playingTheGame)
 			selectedGame = SelectedGame.Maria;
 			break;
 		case "2":
-			selectedGame = SelectedGame.Garrion;
+			selectedGame = SelectedGame.ShipShape;
+            PlayShipShape();
 			break;
 		case "3":
 			selectedGame = SelectedGame.Leon;
@@ -162,7 +163,146 @@ while (playingTheGame)
 		}
 	}
 }
+void PlayShipShape()
+{
+    Console.WriteLine("Welcome, Pirate!");
+    Console.WriteLine("You've been marooned on a deserted island.");
+    Console.WriteLine("Your ship, the Black Pearl, is missing.");
+    Console.WriteLine("Your goal is to find your ship and set sail again.");
+    Console.WriteLine("Are you ready to begin your adventure?");
+    Console.WriteLine();
 
+    int currentLocation = 0;
+    bool hasFoundShip = false;
+
+    while (!hasFoundShip)
+    {
+        Console.WriteLine("Choose your action:");
+        Console.WriteLine("1. Explore the jungle");
+        Console.WriteLine("2. Search the beach");
+        Console.WriteLine("3. Climb a hill");
+        Console.WriteLine("4. Check the shipwreck");
+        Console.WriteLine("5. Build a shelter");
+        Console.WriteLine("6. Light a signal fire");
+        Console.WriteLine("7. Hunt for food");
+        Console.WriteLine("8. Examine a mysterious cave");
+
+        int choice;
+        if (!int.TryParse(Console.ReadLine(), out choice))
+        {
+            Console.WriteLine("Invalid input. Please choose a valid option.");
+            continue;
+        }
+
+        switch (choice)
+        {
+            case 1:
+                Console.WriteLine("You venture into the dense jungle.");
+                if (currentLocation == 0)
+                {
+                    Console.WriteLine("You discover some old tracks.");
+                    Console.WriteLine("Do you follow them? (Y/N)");
+                    if (Console.ReadLine().Equals("Y", StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.WriteLine("You follow the tracks and find your ship!");
+                        hasFoundShip = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You return to the beach.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You find nothing of interest in the jungle.");
+                }
+                break;
+
+            case 2:
+                Console.WriteLine("You search the beach.");
+                if (currentLocation == 0)
+                {
+                    Console.WriteLine("You find a piece of driftwood.");
+                    Console.WriteLine("It has a message carved on it.");
+                    Console.WriteLine("It says, 'Look up the hill.'");
+                }
+                else
+                {
+                    Console.WriteLine("You find some seashells, but nothing else.");
+                }
+                break;
+
+            case 3:
+                Console.WriteLine("You climb a hill.");
+                if (currentLocation == 0)
+                {
+                    Console.WriteLine("You have a better vantage point.");
+                    Console.WriteLine("You spot a glimmer in the distance.");
+                    Console.WriteLine("Could it be your ship?");
+                    Console.WriteLine("You rush down the hill to investigate.");
+                    Console.WriteLine("You see nothing but trees and clouds.");
+                    currentLocation = 0;
+                }
+
+                break;
+
+            case 4:
+                Console.WriteLine("You check the shipwreck.");
+                {
+                    Console.WriteLine("You find a skeleton.");
+                    Console.WriteLine("The skeleton comes alive and attacks!");
+                    Console.WriteLine("You reach for your cutlass and realize you lost it somewhere.");
+                    Console.WriteLine("You have no choice but to run away.");
+                }
+
+                break;
+
+            case 5:
+                Console.WriteLine("You decide to build a shelter.");
+                {
+                    Console.WriteLine("You build a magnificient castle out of sand, leaves and sticks.");
+                }
+
+                break;
+
+            case 6:
+                Console.WriteLine("You light a signal fire.");
+                {
+                    Console.WriteLine("You wait for a few hours.");
+                    Console.WriteLine("You can't sit around forever, you have a ship to find!");
+                }
+
+                break;
+
+            case 7:
+                Console.WriteLine("You hunt for food.");
+                {
+                    Console.WriteLine("You dont find any animals but you do find some coconuts.");
+                    Console.WriteLine("You hit some against a rock nearby to open them and eat your fill.");
+                    Console.WriteLine("You bury the rest in the ground to grow more coconuts...");
+                    Console.WriteLine("You're pretty sure thats how farming works?");
+                }
+
+                break;
+
+            case 8:
+                Console.WriteLine("You examine a mysterious cave.");
+                {
+                    Console.WriteLine("You are pretty sure your ship won't be in a cave, look somewhere else!");
+                }
+
+                break;
+
+
+            default:
+                Console.WriteLine("Invalid choice. Please select a valid option.");
+                break;
+        }
+    }
+
+    Console.WriteLine("Congratulations! You've found your ship, the Black Pearl.");
+    Console.WriteLine("You set sail once again, ready for new adventures on the high seas.");
+}
 void PlayBigWalletGangstas()
 {
 	Random random = new Random();
@@ -1087,7 +1227,7 @@ public enum Suit
 public enum SelectedGame
 {
 	Maria,
-	Garrion,
+	ShipShape,
 	Leon,
 	Kyle,
 	Neebles,
