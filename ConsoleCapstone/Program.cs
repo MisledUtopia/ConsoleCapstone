@@ -119,7 +119,7 @@ while (playingTheGame)
 			break;
 		case "7":
 			selectedGame = SelectedGame.Aaron;
-            PlayBlackJackGame();
+            playBlackJackGame();
 			break;
 		case "8":
 			selectedGame = SelectedGame.Cali;
@@ -1032,7 +1032,7 @@ void PlayWar()
 }
 
 //******************************************************************************
-void PlayBlackJackGame()
+void playBlackJackGame()
 {
     Console.ForegroundColor = ConsoleColor.White;
     Deck deck = new();
@@ -1090,6 +1090,7 @@ void PlayBlackJackGame()
             }
         }
     }
+
     //******************************************************************************
     // Round 1 Start, Buy-In
 
@@ -1115,7 +1116,7 @@ void PlayBlackJackGame()
     bool playAgain = true;
 
     //******************************************************************************
-    // Any continuous round start
+    // All continuous round start
 
     while (playAgain == true)
     {
@@ -1139,7 +1140,7 @@ void PlayBlackJackGame()
         int dealerTotal = CalculateHandValue(dealerHand);
 
         // Introduce betting mechanic
-        // No decimals, again need to test negative numbers
+        // No decimals, need to test negative numbers
 
         int betValue;
 
@@ -1148,7 +1149,11 @@ void PlayBlackJackGame()
             Console.WriteLine("How much would you like to bet? Min ($1) Max ($10000)");
             if (!int.TryParse(Console.ReadLine(), out betValue) || betValue < 0 || betValue > 10000)
             {
-                Console.WriteLine("Invalid bet amount. Please enter an amount between $00.01 and $10000.");
+                Console.WriteLine("Invalid bet amount. Please enter an amount between $1.00 and $10000.");
+            }
+            else if (betValue > buyInValue)
+            {
+                Console.WriteLine("You cannot bet more money than you have.. Try again.");
             }
             else
             {
@@ -1156,13 +1161,13 @@ void PlayBlackJackGame()
             }
         }
 
-        Console.WriteLine($"You're betting ${betValue}. Good Luck!");
+        Console.WriteLine($"You're betting ${betValue}. Good Luck, {playerName}!");
         Console.WriteLine("");
         Console.WriteLine($"Player's hand: {DisplayHand(playerHand, true)} ({playerTotal})");
-        //Console.WriteLine($"Dealer's hand: {DisplayHand(dealerHand, true)} ({dealerTotal})");  //Do not show dealer hand
+        Console.WriteLine($"Dealer lays one card facedown. Dealer's face-up card: {DisplayCard(dealerHand[1])}");
 
         //******************************************************************************
-        // Actual Gameplay - Need to refine some of the mechanics and prompts
+        // Actual Gameplay
 
         while (playerTotal < 21)
         {
@@ -1174,17 +1179,16 @@ void PlayBlackJackGame()
                 Card newCard = deck.DealCard();
                 playerHand.Add(newCard);
                 playerTotal = CalculateHandValue(playerHand);
-                Console.WriteLine($"\nYou drew {DisplayCard(newCard)}");
+                Console.WriteLine($"\n{playerName} drew {DisplayCard(newCard)}");
                 Console.WriteLine($"Player's hand: {DisplayHand(playerHand, true)} ({playerTotal})");
 
                 if (dealerTotal < 17)
-                // Need to make a new variable for facedown and faceup cards for the Dealer
                 {
                     Card newCardDealer = deck.DealCard();
                     dealerHand.Add(newCardDealer);
                     dealerTotal = CalculateHandValue(dealerHand);
                     Console.WriteLine($"\nDealer has to hit. Dealer draws {DisplayCard(newCardDealer)}");
-                    //Console.WriteLine($"Dealer hand: {DisplayHand(dealerHand, true)} ({dealerTotal})");
+                    Console.WriteLine($"Dealer hand: FaceDown, {DisplayCard(dealerHand[1])}, {DisplayCard(newCard)}");
                     continue;
                 }
                 continue;
@@ -1200,7 +1204,7 @@ void PlayBlackJackGame()
                     dealerHand.Add(newCard);
                     dealerTotal = CalculateHandValue(dealerHand);
                     Console.WriteLine($"\nDealer has to hit. Dealer draws {DisplayCard(newCard)}");
-                    Console.WriteLine($"Dealer hand: {DisplayCard(newCard)} ({dealerTotal})");
+                    Console.WriteLine($"Dealer hand: FaceDown, {DisplayCard(dealerHand[1])}, {DisplayCard(newCard)}");
                 }
                 break;
             }
@@ -1233,7 +1237,6 @@ void PlayBlackJackGame()
                     cardStrings.Add(DisplayCard(hand[i]));
                 }
             }
-
             return string.Join(", ", cardStrings);
         }
 
@@ -1264,14 +1267,13 @@ void PlayBlackJackGame()
                 }
             }
 
-            // "Adjust the value of Aces if needed" - ChatGPT
+            // Adjust the value of Aces if needed
 
             while (numAces > 0 && total > 21)
             {
                 total -= 10; // Change the value of one Ace from 11 to 1
                 numAces--;
             }
-
             return total;
         }
 
@@ -1282,7 +1284,6 @@ void PlayBlackJackGame()
 
         //******************************************************************************
         // Tell user outcome of round
-        // I could probably make this a function to figure this out, adjust bankroll, etc. and use a switch statement?
 
         void DetermineWinner(int playerTotal, int dealerTotal)
         {
@@ -1310,7 +1311,6 @@ void PlayBlackJackGame()
                 bankRollAmount = bankRollAmount - betValue;
                 Console.WriteLine($"- ${betValue}\nBankroll: ${bankRollAmount}");
                 return;
-                //Immediate loss if Dealer gets 21
             }
             else if (playerTotal > dealerTotal)                         //Player wins
             {
@@ -1329,7 +1329,7 @@ void PlayBlackJackGame()
                 Console.WriteLine("It's a tie!");                       // TIE
                 Console.WriteLine($"All bets returned. BankRoll : {bankRollAmount}");
             }
-            else if (dealerTotal == 21)
+            else if (dealerTotal == 21)                                 //Player loses
             {
                 Console.WriteLine("Dealer has BlackJack! You lose!");
                 bankRollAmount = bankRollAmount - betValue;
@@ -1349,7 +1349,6 @@ void PlayBlackJackGame()
 
             bool playAnotherRound = anotherRoundUpper == "Y";
 
-            // The bool isn't working properly here. We're not catching invalid responses, they are treated as false
             if (playAnotherRound == true)
             {
                 playAgain = true;
@@ -1372,46 +1371,46 @@ void PlayBlackJackGame()
         }
     }
 }
-
+//******************************************************************************
 //Class
 public class Deck
 {
-public List<Card> Cards { get; set; }
+    public List<Card> Cards { get; set; }
 
-public Deck()
-{
-    Cards = new List<Card>();
-    foreach (Suit suit in Enum.GetValues(typeof(Suit)))
+    public Deck()
     {
-        foreach (FaceValue faceValue in Enum.GetValues(typeof(FaceValue)))
+        Cards = new List<Card>();
+        foreach (Suit suit in Enum.GetValues(typeof(Suit)))
         {
-            Cards.Add(new Card { Suit = suit.ToString(), FaceValue = faceValue.ToString() });
+            foreach (FaceValue faceValue in Enum.GetValues(typeof(FaceValue)))
+            {
+                Cards.Add(new Card { Suit = suit.ToString(), FaceValue = faceValue.ToString() });
+            }
         }
     }
-}
 
-//Method
-public void Shuffle(Random rng)
-{
-    //Random rng = new Random();
-    int n = Cards.Count;
-    while (n > 1)
+    //Method
+    public void Shuffle(Random rng)
     {
-        n--;
-        int k = rng.Next(n + 1);
-        Card value = Cards[k];
-        Cards[k] = Cards[n];
-        Cards[n] = value;
+        //Random rng = new Random();
+        int n = Cards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Card value = Cards[k];
+            Cards[k] = Cards[n];
+            Cards[n] = value;
+        }
     }
-}
 
-//Method
-public Card DealCard()
-{
-    Card card = Cards[0];
-    Cards.RemoveAt(0);
-    return card;
-}
+    //Method
+    public Card DealCard()
+    {
+        Card card = Cards[0];
+        Cards.RemoveAt(0);
+        return card;
+    }
 }
 
 //Class
@@ -1436,6 +1435,7 @@ public enum Suit
     Clubs,
     Spades
 }
+//******************************************************************************
 
 public enum SelectedGame
 {
